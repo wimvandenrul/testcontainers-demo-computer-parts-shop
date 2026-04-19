@@ -1,0 +1,79 @@
+name: E2E Tests (Playwright)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:24-dind
+        options: --privileged
+
+    steps:
+      - name: Docker info
+        run: docker info
+      
+      - name: Docker ps
+        run: docker ps -a
+    
+      # 1. Checkout
+      - uses: actions/checkout@v4
+
+      # 2. Setup Node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      # 3. Build API Docker image
+      - name: Build API Docker image
+        run: |
+          cd backend
+          docker build -t api:latest -f src/API/Dockerfile .
+
+      # 4. Install deps
+      - name: Install frontend deps
+        run: |
+          cd frontend
+          npm ci
+        
+      # 5. Install deps for e2e tests
+      - name: Install e2e deps
+        run: |
+          cd frontend/e2e
+          npm ci
+
+      # 6. Restore Playwright binaries cache
+      - name: Restore Playwright binaries cache
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/playwright.config.ts') }}
+          path: ~/.cache/ms-playwright
+          restore-keys: |
+            ${{ runner.os }}-playwright-${{ hashFiles('**/playwright.config.ts') }}
+            ${{ runner.os }}-playwright-
+
+      # 7. Install Playwright browsers
+      - name: Install Playwright browsers
+        run: |
+          cd frontend/e2e
+          npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+
+      # 8. Run E2E tests (this will start Angular automatically)
+      - name: Run E2E tests
+        run: |
+          cd frontend
+          npm run e2e
+
+      # 9. Upload report (very useful)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: frontend/e2e/playwright-report

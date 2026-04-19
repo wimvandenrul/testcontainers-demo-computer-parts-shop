@@ -1,0 +1,226 @@
+[
+  {
+    "id": 1,
+    "name": "AMD Ryzen 9 7950X",
+    "description": "16-core, 32-thread desktop processor with 5.7GHz max boost, 80MB cache, AM5 socket. Ideal for high-performance gaming and content creation.",
+    "price": 549.99,
+    "category": "cpu",
+    "image": "assets/images/cpu-amd-7950x.png"
+  },
+  {
+    "id": 2,
+    "name": "AMD Ryzen 7 7800X3D",
+    "description": "8-core, 16-thread gaming processor with 3D V-Cache technology, 5.0GHz max boost, 96MB cache. The ultimate gaming CPU.",
+    "price": 349.99,
+    "category": "cpu",
+    "image": "assets/images/cpu-amd-7800x3d.png"
+  },
+  {
+    "id": 3,
+    "name": "Intel Core i9-14900K",
+    "description": "24-core (8P+16E), 32-thread processor with 6.0GHz max turbo, 36MB cache, LGA1700 socket. Top-tier performance for enthusiasts.",
+    "price": 549.00,
+    "category": "cpu",
+    "image": "assets/images/cpu-intel-14900k.png"
+  },
+  {
+    "id": 4,
+    "name": "Intel Core i5-14600K",
+    "description": "14-core (6P+8E), 20-thread processor with 5.3GHz max turbo, 24MB cache. Excellent price-to-performance for gaming.",
+    "price": 279.99,
+    "category": "cpu",
+    "image": "assets/images/cpu-intel-14600k.png"
+  },
+  {
+    "id": 5,
+    "name": "NVIDIA GeForce RTX 4090",
+    "description": "24GB GDDR6X, 16384 CUDA cores, DLSS 3.0, ray tracing. The most powerful consumer GPU for 4K gaming and AI workloads.",
+    "price": 1599.99,
+    "category": "gpu",
+    "image": "assets/images/gpu-rtx4090.png"
+  },
+  {
+    "id": 6,
+    "name": "NVIDIA GeForce RTX 4070 Super",
+    "description": "12GB GDDR6X, 7168 CUDA cores, DLSS 3.0, excellent 1440p gaming with ray tracing support.",
+    "price": 599.99,
+    "category": "gpu",
+    "image": "assets/images/gpu-rtx4070s.png"
+  },
+  {
+    "id": 7,
+    "name": "AMD Radeon RX 7900 XTX",
+    "description": "24GB GDDR6, 96 compute units, FSR 3.0, DisplayPort 2.1. AMD's flagship GPU for 4K gaming.",
+    "price": 899.99,
+    "category": "gpu",
+    "image": "assets/images/gpu-rx7900xtx.png"
+  },
+  {
+    "id": 8,
+    "name": "AMD Radeon RX 7600",
+    "description": "8GB GDDR6, 2048 stream processors, great 1080p gaming performance at an affordable price.",
+    "price": 249.99,
+    "category": "gpu",
+    "image": "assets/images/gpu-rx7600.png"
+  },
+  {
+    "id": 9,
+    "name": "ASUS ROG Maximus Z790 Hero",
+    "description": "LGA1700, DDR5, 5x M.2, WiFi 6E, Thunderbolt 4, PCIe 5.0. Premium Intel Z790 motherboard.",
+    "price": 629.99,
+    "category": "motherboard",
+    "image": "assets/images/mb-z790-hero.png"
+  },
+  {
+    "id": 10,
+    "name": "MSI MAG B650 Tomahawk WiFi",
+    "description": "AM5 socket, DDR5, 2x M.2, WiFi 6E, 2.5G LAN. Great value B650 board for AMD Ryzen 7000.",
+    "price": 219.99,
+    "category": "motherboard",
+    "image": "assets/images/mb-b650-tomahawk.png"
+  },
+  {
+    "id": 11,
+    "name": "Gigabyte X670E Aorus Master",
+    "description": "AM5, DDR5, 4x M.2, WiFi 6E, PCIe 5.0, 10GbE LAN. Feature-packed AMD X670E motherboard.",
+    "price": 399.99,
+    "category": "motherboard",
+    "image": "assets/images/mb-x670e-aorus.png"
+  },
+  {
+    "id": 12,
+    "name": "ASRock B760M Pro RS/D4",
+    "description": "LGA1700, DDR4, 2x M.2, PCIe 4.0, micro-ATX form factor. Budget-friendly Intel motherboard.",
+    "price": 119.99,
+    "category": "motherboard",
+    "image": "assets/images/mb-b760m-prors.png"
+  },
+  {
+    "id": 13,
+    "name": "Corsair Vengeance DDR5 32GB (2x16GB)",
+    "description": "5600MHz CL36, Intel XMP 3.0, AMD EXPO, low-profile heat spreader. Reliable high-speed memory.",
+    "price": 89.99,
+    "category": "ram",
+    "image": "assets/images/ram-corsair-32gb.png"
+  },
+  {
+    "id": 14,
+    "name": "G.Skill Trident Z5 RGB 64GB (2x32GB)",
+    "description": "6000MHz CL30, DDR5, Intel XMP 3.0, customizable RGB lighting. Premium high-capacity kit.",
+    "price": 189.99,
+    "category": "ram",
+    "image": "assets/images/ram-gskill-64gb.png"
+  },
+  {
+    "id": 15,
+    "name": "Kingston Fury Beast DDR5 16GB (2x8GB)",
+    "description": "4800MHz CL40, compact heat spreader, Intel XMP 3.0. Entry-level DDR5 for budget builds.",
+    "price": 49.99,
+    "category": "ram",
+    "image": "assets/images/ram-kingston-16gb.png"
+  },
+  {
+    "id": 16,
+    "name": "Samsung 990 Pro 2TB NVMe SSD",
+    "description": "PCIe 4.0, 7,450 MB/s read, 6,900 MB/s write, M.2 2280. Top-tier Gen4 SSD for gaming.",
+    "price": 169.99,
+    "category": "storage",
+    "image": "assets/images/ssd-samsung-990pro.png"
+  },
+  {
+    "id": 17,
+    "name": "WD Black SN850X 4TB NVMe SSD",
+    "description": "PCIe 4.0, 7,300 MB/s read, M.2 2280. Massive capacity with blazing speeds for pros.",
+    "price": 329.99,
+    "category": "storage",
+    "image": "assets/images/ssd-wd-sn850x.png"
+  },
+  {
+    "id": 18,
+    "name": "Crucial P3 Plus 1TB NVMe SSD",
+    "description": "PCIe 4.0, 5,000 MB/s read, M.2 2280. Affordable Gen4 SSD for everyday use.",
+    "price": 59.99,
+    "category": "storage",
+    "image": "assets/images/ssd-crucial-p3.png"
+  },
+  {
+    "id": 19,
+    "name": "Seagate Barracuda 4TB HDD",
+    "description": "7200 RPM, 256MB cache, 3.5-inch. High-capacity mechanical drive for bulk storage.",
+    "price": 79.99,
+    "category": "storage",
+    "image": "assets/images/hdd-seagate-4tb.png"
+  },
+  {
+    "id": 20,
+    "name": "Corsair RM850x 850W",
+    "description": "80 PLUS Gold, fully modular, Zero RPM fan mode, 10-year warranty. Reliable premium PSU.",
+    "price": 139.99,
+    "category": "psu",
+    "image": "assets/images/psu-corsair-rm850x.png"
+  },
+  {
+    "id": 21,
+    "name": "EVGA SuperNOVA 1000 G7 1000W",
+    "description": "80 PLUS Gold, fully modular, Eco Mode, 10-year warranty. Perfect for RTX 4090 builds.",
+    "price": 199.99,
+    "category": "psu",
+    "image": "assets/images/psu-evga-1000w.png"
+  },
+  {
+    "id": 22,
+    "name": "be quiet! Pure Power 12 M 750W",
+    "description": "80 PLUS Gold, modular, 120mm Silent Wings fan, 5-year warranty. Quiet and efficient.",
+    "price": 109.99,
+    "category": "psu",
+    "image": "assets/images/psu-bequiet-750w.png"
+  },
+  {
+    "id": 23,
+    "name": "NZXT H7 Flow",
+    "description": "Mid-tower, high airflow mesh front, tempered glass side panel, cable management bar. Clean design.",
+    "price": 129.99,
+    "category": "case",
+    "image": "assets/images/case-nzxt-h7.png"
+  },
+  {
+    "id": 24,
+    "name": "Fractal Design North",
+    "description": "Mid-tower, real wood mesh front panel, tempered glass, compact ATX. Elegant aesthetics.",
+    "price": 139.99,
+    "category": "case",
+    "image": "assets/images/case-fractal-north.png"
+  },
+  {
+    "id": 25,
+    "name": "Lian Li O11 Dynamic EVO",
+    "description": "Mid-tower, dual chamber, tempered glass on 3 sides, supports E-ATX. Show off your build.",
+    "price": 169.99,
+    "category": "case",
+    "image": "assets/images/case-liani-o11.png"
+  },
+  {
+    "id": 26,
+    "name": "Corsair iCUE H150i Elite LCD XT",
+    "description": "360mm AIO liquid cooler, LCD pump head display, ML120 RGB fans, excellent thermal performance.",
+    "price": 269.99,
+    "category": "cooling",
+    "image": "assets/images/cooling-corsair-h150i.png"
+  },
+  {
+    "id": 27,
+    "name": "Noctua NH-D15 chromax.black",
+    "description": "Dual-tower air cooler, 2x 140mm NF-A15 fans, 250W TDP, legendary quiet performance.",
+    "price": 109.99,
+    "category": "cooling",
+    "image": "assets/images/cooling-noctua-d15.png"
+  },
+  {
+    "id": 28,
+    "name": "Arctic Liquid Freezer II 280",
+    "description": "280mm AIO liquid cooler, VRM fan on pump block, exceptional price-to-performance.",
+    "price": 89.99,
+    "category": "cooling",
+    "image": "assets/images/cooling-arctic-lf2.png"
+  }
+]

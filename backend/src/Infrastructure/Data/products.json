@@ -1,0 +1,226 @@
+[
+  {
+    "id": 1,
+    "name": "AMD Ryzen 9 7950X",
+    "description": "16-core, 32-thread desktop processor with 5.7 GHz max boost, 170W TDP",
+    "price": 549.99,
+    "category": "Cpu",
+    "image": "/assets/images/cpu-7950x.png"
+  },
+  {
+    "id": 2,
+    "name": "AMD Ryzen 7 7800X3D",
+    "description": "8-core gaming processor with 3D V-Cache, 5.0 GHz max boost",
+    "price": 349.99,
+    "category": "Cpu",
+    "image": "/assets/images/cpu-7800x3d.png"
+  },
+  {
+    "id": 3,
+    "name": "Intel Core i9-14900K",
+    "description": "24-core (8P+16E) desktop processor, 6.0 GHz max turbo",
+    "price": 549.00,
+    "category": "Cpu",
+    "image": "/assets/images/cpu-14900k.png"
+  },
+  {
+    "id": 4,
+    "name": "Intel Core i5-14600K",
+    "description": "14-core (6P+8E) processor, 5.3 GHz max turbo, great value",
+    "price": 279.99,
+    "category": "Cpu",
+    "image": "/assets/images/cpu-14600k.png"
+  },
+  {
+    "id": 5,
+    "name": "NVIDIA GeForce RTX 4090",
+    "description": "24GB GDDR6X, 16384 CUDA cores, ultimate 4K gaming",
+    "price": 1599.99,
+    "category": "Gpu",
+    "image": "/assets/images/gpu-4090.png"
+  },
+  {
+    "id": 6,
+    "name": "NVIDIA GeForce RTX 4070 Super",
+    "description": "12GB GDDR6X, excellent 1440p performance",
+    "price": 599.99,
+    "category": "Gpu",
+    "image": "/assets/images/gpu-4070-super.png"
+  },
+  {
+    "id": 7,
+    "name": "AMD Radeon RX 7900 XTX",
+    "description": "24GB GDDR6, 96 compute units, high-end gaming",
+    "price": 899.99,
+    "category": "Gpu",
+    "image": "/assets/images/gpu-7900xtx.png"
+  },
+  {
+    "id": 8,
+    "name": "AMD Radeon RX 7600",
+    "description": "8GB GDDR6, great 1080p gaming value",
+    "price": 249.99,
+    "category": "Gpu",
+    "image": "/assets/images/gpu-7600.png"
+  },
+  {
+    "id": 9,
+    "name": "ASUS ROG Strix Z790-E",
+    "description": "LGA 1700, DDR5, PCIe 5.0, WiFi 6E, premium gaming board",
+    "price": 479.99,
+    "category": "Motherboard",
+    "image": "/assets/images/mobo-z790-e.png"
+  },
+  {
+    "id": 10,
+    "name": "MSI MEG X670E Ace",
+    "description": "AM5 socket, DDR5, PCIe 5.0, E-ATX flagship",
+    "price": 499.99,
+    "category": "Motherboard",
+    "image": "/assets/images/mobo-x670e-ace.png"
+  },
+  {
+    "id": 11,
+    "name": "Gigabyte B650 Aorus Elite",
+    "description": "AM5, DDR5, solid mid-range option for Ryzen 7000",
+    "price": 219.99,
+    "category": "Motherboard",
+    "image": "/assets/images/mobo-b650-aorus.png"
+  },
+  {
+    "id": 12,
+    "name": "ASRock B760M Pro RS",
+    "description": "LGA 1700, Micro-ATX, DDR5, budget-friendly Intel board",
+    "price": 139.99,
+    "category": "Motherboard",
+    "image": "/assets/images/mobo-b760m.png"
+  },
+  {
+    "id": 13,
+    "name": "G.Skill Trident Z5 RGB 32GB",
+    "description": "DDR5-6000, CL30, 2x16GB kit, premium RGB RAM",
+    "price": 134.99,
+    "category": "Ram",
+    "image": "/assets/images/ram-trident-z5.png"
+  },
+  {
+    "id": 14,
+    "name": "Corsair Dominator Platinum 32GB",
+    "description": "DDR5-5600, CL36, 2x16GB, sleek white design",
+    "price": 129.99,
+    "category": "Ram",
+    "image": "/assets/images/ram-dominator.png"
+  },
+  {
+    "id": 15,
+    "name": "Kingston Fury Beast 16GB",
+    "description": "DDR5-5200, CL40, 2x8GB, budget-friendly option",
+    "price": 49.99,
+    "category": "Ram",
+    "image": "/assets/images/ram-fury-beast.png"
+  },
+  {
+    "id": 16,
+    "name": "Samsung 990 Pro 2TB NVMe",
+    "description": "PCIe 4.0, 7450 MB/s read, top-tier SSD",
+    "price": 179.99,
+    "category": "Storage",
+    "image": "/assets/images/ssd-990-pro.png"
+  },
+  {
+    "id": 17,
+    "name": "WD Black SN850X 2TB",
+    "description": "PCIe 4.0, 7300 MB/s read, gaming-optimized SSD",
+    "price": 149.99,
+    "category": "Storage",
+    "image": "/assets/images/ssd-sn850x.png"
+  },
+  {
+    "id": 18,
+    "name": "Crucial T700 2TB",
+    "description": "PCIe 5.0, 12400 MB/s read, next-gen NVMe",
+    "price": 299.99,
+    "category": "Storage",
+    "image": "/assets/images/ssd-t700.png"
+  },
+  {
+    "id": 19,
+    "name": "Seagate Barracuda 4TB HDD",
+    "description": "5400 RPM, 256MB cache, bulk storage",
+    "price": 79.99,
+    "category": "Storage",
+    "image": "/assets/images/hdd-barracuda.png"
+  },
+  {
+    "id": 20,
+    "name": "Corsair RM850x",
+    "description": "850W, 80+ Gold, fully modular, ATX 3.0",
+    "price": 139.99,
+    "category": "Psu",
+    "image": "/assets/images/psu-rm850x.png"
+  },
+  {
+    "id": 21,
+    "name": "Seasonic Focus GX-750",
+    "description": "750W, 80+ Gold, fully modular, 10-year warranty",
+    "price": 109.99,
+    "category": "Psu",
+    "image": "/assets/images/psu-gx750.png"
+  },
+  {
+    "id": 22,
+    "name": "be quiet! Dark Power 13 1000W",
+    "description": "1000W, 80+ Titanium, premium silent PSU",
+    "price": 279.99,
+    "category": "Psu",
+    "image": "/assets/images/psu-dark-power.png"
+  },
+  {
+    "id": 23,
+    "name": "NZXT H7 Flow",
+    "description": "Mid-tower ATX, high airflow, clean cable management",
+    "price": 129.99,
+    "category": "Case",
+    "image": "/assets/images/case-h7-flow.png"
+  },
+  {
+    "id": 24,
+    "name": "Fractal Design North",
+    "description": "Mid-tower ATX, wooden front panel, elegant design",
+    "price": 139.99,
+    "category": "Case",
+    "image": "/assets/images/case-north.png"
+  },
+  {
+    "id": 25,
+    "name": "Lian Li O11 Dynamic EVO",
+    "description": "Dual-chamber mid-tower, showcase build, tempered glass",
+    "price": 169.99,
+    "category": "Case",
+    "image": "/assets/images/case-o11-evo.png"
+  },
+  {
+    "id": 26,
+    "name": "Noctua NH-D15",
+    "description": "Dual-tower air cooler, 250W TDP, near-silent operation",
+    "price": 109.99,
+    "category": "Cooling",
+    "image": "/assets/images/cooler-nhd15.png"
+  },
+  {
+    "id": 27,
+    "name": "Arctic Liquid Freezer II 360",
+    "description": "360mm AIO, VRM fan, excellent thermal performance",
+    "price": 109.99,
+    "category": "Cooling",
+    "image": "/assets/images/cooler-lf2-360.png"
+  },
+  {
+    "id": 28,
+    "name": "be quiet! Dark Rock Pro 5",
+    "description": "Dual-tower, 270W TDP, ultra-quiet 23.6 dBA",
+    "price": 89.99,
+    "category": "Cooling",
+    "image": "/assets/images/cooler-darkrock5.png"
+  }
+]
