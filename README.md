@@ -4,11 +4,15 @@ This repository is a demo application showing how to use Testcontainers with a .
 
 The goal: provide a compact, runnable example of local development, automated tests that spin up disposable database containers (Testcontainers), and E2E browser tests.
 
+[![backend-integration-tests](https://github.com/wimvandenrul/testcontainers-demo-computer-parts-shop/actions/workflows/integration-tests.yml/badge.svg)](https://github.com/wimvandenrul/testcontainers-demo-computer-parts-shop/actions/workflows/integration-tests.yml)
+
+[![E2E Tests (Playwright)](https://github.com/wimvandenrul/testcontainers-demo-computer-parts-shop/actions/workflows/e2e-tests.yml/badge.svg)](https://github.com/wimvandenrul/testcontainers-demo-computer-parts-shop/actions/workflows/e2e-tests.yml)
+
 Contents
 - backend/ — .NET 10 Web API
 - frontend/ — Angular app
 - tests/ — Playwright E2E tests and integration tests
-- .github/workflows - Example CI workflow to run the integration tests + E2E browser tests 
+- .github/workflows - Example CI workflow to run the integration tests + E2E browser tests
 
 Overview
 --------
