@@ -10,9 +10,10 @@ The goal: provide a compact, runnable example of local development, automated te
 
 Contents
 - backend/ — .NET 10 Web API
+- tests/ -.NET integration tests (backend tests)
 - frontend/ — Angular app
-- tests/ — Playwright E2E tests and integration tests
-- .github/workflows - Example CI workflow to run the integration tests + E2E browser tests
+- frontend/e2e/ — Playwright E2E tests
+- .github/workflows/ - Example CI workflow to run the integration tests + E2E browser tests in Github actions
 
 Overview
 --------
