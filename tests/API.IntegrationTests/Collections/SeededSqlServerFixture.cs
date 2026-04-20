@@ -10,39 +10,35 @@ namespace Api.IntegrationTests.Collections
 {
     public sealed class SeededSqlServerFixture : IAsyncLifetime
     {
-        private readonly MsSqlContainer _sqlContainer;
-        private Respawner _respawner = null;
+        private string _connectionString;
+        private MsSqlContainer _sqlContainer;
 
-        private ServiceProvider _serviceProvider = null;
-        private ShopContext _dbContext = null;
+        private ShopContext _dbContext;
+        private Respawner _respawner;
+        private CustomWebApplicationFactory _factory;
 
-        public string ConnectionString { get; private set; }
-
-        public SeededSqlServerFixture()
-        {
-            _sqlContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2025-latest")
-                .WithPassword("YourStrongP@ssword123456789")
-                .WithCleanUp(true)
-                .Build();
-        }
-
-        public string GetApplicationConnectionString()
-        {
-            return ConnectionString;
-        }
+        public HttpClient HttpClient { get; set; }
 
         public async Task InitializeAsync()
         {
             Debug.WriteLine("Starting SQL Server container...");
 
+            _sqlContainer = new MsSqlBuilder("mcr.microsoft.com/mssql/server:2025-latest")
+                                    .WithPassword("YourStrongP@ssword123456789")
+                                    .WithCleanUp(true)
+                                    .Build();
+
             await _sqlContainer.StartAsync();
-            ConnectionString = _sqlContainer.GetConnectionString();
+            _connectionString = _sqlContainer.GetConnectionString();
+
+            _factory = new CustomWebApplicationFactory(_connectionString);
+            HttpClient = _factory.CreateClient();
 
             var services = new ServiceCollection();
-            services.AddDbContext<ShopContext>(options => options.UseSqlServer(ConnectionString));
+            services.AddDbContext<ShopContext>(options => options.UseSqlServer(_connectionString));
 
-            _serviceProvider = services.BuildServiceProvider();
-            _dbContext = _serviceProvider.GetRequiredService<ShopContext>();
+            var serviceProvider = services.BuildServiceProvider();
+            _dbContext = serviceProvider.GetRequiredService<ShopContext>();
 
             await CreateDatabase();
             await InitializeRespawner();
@@ -51,7 +47,7 @@ namespace Api.IntegrationTests.Collections
 
         private async Task InitializeRespawner()
         {
-            using (var conn = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
                 _respawner = await Respawner.CreateAsync(conn);
@@ -79,7 +75,7 @@ namespace Api.IntegrationTests.Collections
         {
             Debug.WriteLine("Resetting database to baseline seed");
 
-            using (var conn = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(_connectionString))
             {
                 await conn.OpenAsync();
                 await _respawner.ResetAsync(conn);
@@ -91,9 +87,11 @@ namespace Api.IntegrationTests.Collections
         public async Task DisposeAsync()
         {
             Debug.WriteLine("Removing SQL Server container...");
+            if (_sqlContainer != null) await _sqlContainer.DisposeAsync();
 
-            await _sqlContainer.DisposeAsync();
+            if (_factory != null) await _factory.DisposeAsync();
+            if (_dbContext != null) await _dbContext.DisposeAsync();
+            if (HttpClient != null) HttpClient.Dispose();
         }
-
     }
 }

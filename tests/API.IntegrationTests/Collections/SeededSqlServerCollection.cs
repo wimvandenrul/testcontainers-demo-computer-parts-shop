@@ -1,6 +1,6 @@
 ﻿namespace Api.IntegrationTests.Collections
 {
-    [CollectionDefinition("Seeded SQL Server")]
+    [CollectionDefinition("Seeded SQL Server", DisableParallelization = true)]
     public sealed class SeededSqlServerCollection : ICollectionFixture<SeededSqlServerFixture>
     {
     }
