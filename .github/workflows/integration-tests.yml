@@ -26,11 +26,11 @@ jobs:
           dotnet-version: 10.0.x
 
       # 3. Restore dependencies
-      - name: Restore
+      - name: Restore Application Integration Tests
         run: dotnet restore tests/Application.IntegrationTests/Application.IntegrationTests.csproj
 
       # 4. Build
-      - name: Build
+      - name: Build Application Integration Tests
         run: dotnet build --no-restore --configuration Release tests/Application.IntegrationTests/Application.IntegrationTests.csproj
 
       # 5. Run Application Integration Tests
@@ -38,16 +38,24 @@ jobs:
         run: |
           dotnet test tests/Application.IntegrationTests/Application.IntegrationTests.csproj \
             --no-build --configuration Release \
-            --logger "trx;LogFileName=test-results.trx"
+            --logger "trx;LogFileName=application-results.trx"
 
-      # 6. Run API Integration Tests
+      # 6. Restore dependencies
+      - name: Restore API Integration Tests
+        run: dotnet restore tests/API.IntegrationTests/API.IntegrationTests.csproj
+
+      # 7. Build
+      - name: Build API Integration Tests
+        run: dotnet build --no-restore --configuration Release tests/API.IntegrationTests/API.IntegrationTests.csproj
+
+      # 8. Run API Integration Tests
       - name: Run API Integration Tests
         run: |
           dotnet test tests/API.IntegrationTests/API.IntegrationTests.csproj \
             --no-build --configuration Release \
-            --logger "trx;LogFileName=test-results.trx"
+            --logger "trx;LogFileName=api-results.trx"
 
-      # 7. Publish test results (optional but recommended)
+      # 9. Publish test results (optional but recommended)
       - name: Publish Test Results
         if: always()
         uses: actions/upload-artifact@v4
