@@ -33,14 +33,21 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release tests/Application.IntegrationTests/Application.IntegrationTests.csproj
 
-      # 5. Run Integration Tests (Testcontainers will start MSSQL)
-      - name: Run Integration Tests
+      # 5. Run Application Integration Tests
+      - name: Run Application Integration Tests
         run: |
           dotnet test tests/Application.IntegrationTests/Application.IntegrationTests.csproj \
             --no-build --configuration Release \
             --logger "trx;LogFileName=test-results.trx"
 
-      # 6. Publish test results (optional but recommended)
+      # 6. Run API Integration Tests
+      - name: Run API Integration Tests
+        run: |
+          dotnet test tests/API.IntegrationTests/API.IntegrationTests.csproj \
+            --no-build --configuration Release \
+            --logger "trx;LogFileName=test-results.trx"
+
+      # 7. Publish test results (optional but recommended)
       - name: Publish Test Results
         if: always()
         uses: actions/upload-artifact@v4
