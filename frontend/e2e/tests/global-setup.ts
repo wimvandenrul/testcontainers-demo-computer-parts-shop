@@ -31,8 +31,6 @@ setup('create testcontainers', async ({ }) => {
     .withWaitStrategy(Wait.forListeningPorts())
     .start();
 
-  const dbHost = dbContainer.getHost();
-  const dbPort = dbContainer.getMappedPort(1433);
 
   const connectionString =
     `Server=sqlserver;Database=ShopDb;User Id=sa;Password=YourStrongP@ssword123456789;TrustServerCertificate=True`;
