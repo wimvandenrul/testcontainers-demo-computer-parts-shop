@@ -12,12 +12,12 @@ e2e/
 ├── package.json            # E2E test dependencies
 └── tests/
     ├── product-list.spec.ts       # Product list page tests
-    ├── admin-create-product.spec.ts # Admin: Create product tests
-    ├── admin-edit-product.spec.ts   # Admin: Edit product tests
-    ├── admin-delete-product.spec.ts # Admin: Delete product tests
-    ├── admin-form-validation.spec.ts # Admin: Form validation tests
-    ├── cart.spec.ts                 # Cart functionality tests
-    └── navigation.spec.ts           # Navigation & routing tests
+    ├── admin-create-product.spec.ts (NOT DEVELOPED YET) # Admin: Create product tests
+    ├── admin-edit-product.spec.ts (NOT DEVELOPED YET)   # Admin: Edit product tests
+    ├── admin-delete-product.spec.ts (NOT DEVELOPED YET) # Admin: Delete product tests
+    ├── admin-form-validation.spec.ts (NOT DEVELOPED YET) # Admin: Form validation tests
+    ├── cart.spec.ts (NOT DEVELOPED YET)                 # Cart functionality tests
+    └── navigation.spec.ts (NOT DEVELOPED YET)          # Navigation & routing tests
 ```
 
 ## Test Coverage
@@ -28,7 +28,7 @@ e2e/
 - Product cards with "Add" buttons
 - Navigation to other pages
 
-### Admin - Create Product
+### Admin - Create Product (NOT DEVELOPED YET)
 - Open add product modal
 - Create product with valid data
 - Verify product appears in table
@@ -36,13 +36,13 @@ e2e/
 - Cancel product creation
 - Close modal (backdrop, close button)
 
-### Admin - Edit Product
+### Admin - Edit Product (NOT DEVELOPED YET)
 - Open edit modal with pre-filled data
 - Update product name, description, price, category
 - Cancel editing without saving
 - Verify updates persist
 
-### Admin - Delete Product
+### Admin - Delete Product (NOT DEVELOPED YET)
 - Delete product with confirmation
 - Verify product removed from admin table
 - Verify product removed from product list page
@@ -50,7 +50,7 @@ e2e/
 - Cancel deletion
 - Bulk delete operations
 
-### Admin - Form Validation
+### Admin - Form Validation (NOT DEVELOPED YET)
 - Required field validation (name, description, price, category)
 - Price validation (must be > 0)
 - Empty/whitespace validation
@@ -58,7 +58,7 @@ e2e/
 - Decimal price acceptance
 - Error message display and clearing
 
-### Cart Functionality
+### Cart Functionality (NOT DEVELOPED YET)
 - Add products to cart
 - Cart count badge updates
 - Multiple product additions
@@ -70,7 +70,7 @@ e2e/
 - Product removal
 - Empty cart state
 
-### Navigation & Routing
+### Navigation & Routing (NOT DEVELOPED YET)
 - Header navigation visibility
 - Page-to-page navigation
 - Unknown route redirection to home

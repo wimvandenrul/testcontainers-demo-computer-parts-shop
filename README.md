@@ -88,7 +88,13 @@ B. Playwright E2E tests
 
 Playwright tests are located in the tests/ folder and exercise the running app via a real browser. Typical flow:
 
-1. Ensure the backend and frontend are running (see Running the app above). For CI, you can run the server in Docker.
+1. Ensure the backend image API is built:
+
+```powershell
+cd backend
+docker build -t api:latest -f src\API\Dockerfile .
+```
+
 2. Install dependencies and Playwright browsers:
 
 ```powershell
