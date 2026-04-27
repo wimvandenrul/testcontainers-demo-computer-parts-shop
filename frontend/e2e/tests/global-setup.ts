@@ -3,19 +3,21 @@ import { writeFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
 import { GenericContainer, Network, Wait } from "testcontainers";
 
-// Disable Ryuk auto-cleanup so containers survive beyond test process exit
-//process.env.TESTCONTAINERS_RYUK_DISABLED = "true";
+// Detect Playwright/VS Code debug sessions
+const isDebugSession =
+  process.env.PWDEBUG === '1' ||
+  !!process.env.VSCODE_INSPECTOR_OPTIONS ||
+  process.execArgv.some(arg => arg.includes('--inspect'));
+
+if (isDebugSession) {
+  process.env.TESTCONTAINERS_RYUK_DISABLED = 'true';
+  console.log('Debug mode detected: TESTCONTAINERS_RYUK_DISABLED=true');
+}
 
 let dbContainer: any;
 let apiContainer: any;
 
 setup('create testcontainers', async ({ }) => {
-  // 1. Start SQL Server container
-  // TODO: Use MSSQLServerContainer from testcontainers instead of GenericContainer for better configuration and management
-  // await using dbContainer = 
-  //   await new MSSQLServerContainer("mcr.microsoft.com/mssql/server:2025-latest")
-  //   .acceptLicense()
-  //   .start();
 
   const network = await new Network().start();
 
