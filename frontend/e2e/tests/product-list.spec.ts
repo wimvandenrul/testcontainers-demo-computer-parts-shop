@@ -14,16 +14,16 @@ test.describe('Product List Page', () => {
 
 
   test('should display all categories', async ({ page }) => {
-
-    // Navigate to the product list page
-    await productListPage.goto();
-
-    await page.waitForResponse(res =>
-      res.url().includes('/categories') && res.ok()
-    );
+    await Promise.all([
+      page.waitForResponse(res =>
+        res.url().includes('/categories') && res.ok()
+      ),
+      productListPage.goto(),
+    ])
 
     await expect(productListPage.categorySections).toHaveCount(8);
   });
+
 
   test('verify category order', async ({ page }) => {
 
