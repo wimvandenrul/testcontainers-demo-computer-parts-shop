@@ -69,27 +69,34 @@ app.MapGet("/test/seed-db", async (ShopContext context) =>
     return Results.Ok();
 });
 
+var _lock = new SemaphoreSlim(1, 1);
 app.MapGet("/test/reset-db", async (IConfiguration config, ShopContext context) =>
 {
-    Console.WriteLine("Ensuring database is created...");
-    await context.Database.EnsureCreatedAsync();
-
-    var connStr = config.GetConnectionString("DefaultConnection");
-
-    using (var conn = new SqlConnection(connStr))
+    await _lock.WaitAsync();
+    try
     {
+        Console.WriteLine("Resetting database...");
+
+        await context.Database.EnsureCreatedAsync();
+
+        var connStr = config.GetConnectionString("DefaultConnection");
+
+        using var conn = new SqlConnection(connStr);
         await conn.OpenAsync();
-        var respawner = await Respawner.CreateAsync(conn, new RespawnerOptions()
-        {
 
-        });
+        var respawner = await Respawner.CreateAsync(conn);
+
         await respawner.ResetAsync(conn);
-        await conn.CloseAsync();
-    }
 
-    var seedSqlScript = File.ReadAllText("TestContainers/DB-SEED-ONLY.sql");
-    await context.Database.ExecuteSqlRawAsync(seedSqlScript);
-    return Results.Ok();
+        var seedSqlScript = await File.ReadAllTextAsync("TestContainers/DB-SEED-ONLY.sql");
+        await context.Database.ExecuteSqlRawAsync(seedSqlScript);
+
+        return Results.Ok();
+    }
+    finally
+    {
+        _lock.Release();
+    }
 });
 
 

@@ -1,4 +1,4 @@
-import { Order} from '../../src/app/models/order.model';
+import { Order } from '../../src/app/models/order.model';
 import { test, expect, dbFixture } from "./test-fixture";
 import { ProductListPage, Header, CartPage } from "../pages";
 
