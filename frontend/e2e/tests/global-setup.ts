@@ -45,11 +45,14 @@ setup('create testcontainers', async ({ }) => {
     })
     .withExposedPorts(8080)
     .withNetwork(network)
+    .withNetworkAliases("api")
     .withWaitStrategy(Wait.forHttp("/health", 8080))
     .start();
 
 
-  const apiUrl = `http://${apiContainer.getHost()}:${apiContainer.getMappedPort(8080)}`;
+const apiUrl = `http://${apiContainer.getHost()}:${apiContainer.getMappedPort(8080)}`;
+
+console.log('Global setup: API URL:', apiUrl);
 
    // 3. Expose to tests
   process.env.API_URL = apiUrl;
