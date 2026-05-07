@@ -50,7 +50,7 @@ setup('create testcontainers', async ({ }) => {
     .start();
 
 
-const apiUrl = `http://127.0.0.1:${apiContainer.getMappedPort(8080)}`;
+const apiUrl = `http://${apiContainer.getHost()}:${apiContainer.getMappedPort(8080)}`;
 
 console.log('Global setup: API URL:', apiUrl);
 
