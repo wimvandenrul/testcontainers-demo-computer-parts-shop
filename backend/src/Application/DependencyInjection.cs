@@ -1,6 +1,8 @@
 using Application.UseCases.Products.Commands;
 using Application.UseCases.Products.Queries;
 using Application.UseCases.Categories.Queries;
+using Application.UseCases.Orders.Commands;
+using Application.UseCases.Orders.Queries;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application;
@@ -14,6 +16,8 @@ public static class DependencyInjection
         services.AddScoped<UpdateProductCommand>();
         services.AddScoped<DeleteProductCommand>();
         services.AddScoped<GetCategoriesQuery>();
+        services.AddScoped<CreateOrderCommand>();
+        services.AddScoped<GetOrdersQuery>();
         return services;
     }
 }

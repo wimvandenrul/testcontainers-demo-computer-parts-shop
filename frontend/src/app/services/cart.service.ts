@@ -1,11 +1,15 @@
-import { Injectable, inject, signal, computed, Signal } from '@angular/core';
+import { Injectable, inject, signal, computed, Signal, NgZone, ApplicationRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product.model';
-import { CartItem, CustomerInfo, Order } from '../models/cart.model';
+import { CartItem, CustomerInfo } from '../models/cart.model';
+import { Order } from '../models/order.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
   private http = inject(HttpClient);
+  private ngZone = inject(NgZone);
+  private appRef = inject(ApplicationRef);
 
   private _items = signal<CartItem[]>(this.loadFromStorage());
   readonly items: Signal<CartItem[]> = this._items.asReadonly();
@@ -74,16 +78,34 @@ export class CartService {
     return this._items().some((i) => i.product.id === productId);
   }
 
-  submitOrder(customer: CustomerInfo): Order {
-    const order: Order = {
-      id: `ORD-${Date.now()}`,
-      items: [...this._items()],
-      total: this.total(),
-      customer,
-      date: new Date().toISOString(),
+  submitOrder(customer: CustomerInfo): Promise<Order> {
+    const items = this._items();
+
+    const createOrderDto = {
+      firstName: customer.firstName,
+      lastName: customer.lastName,
+      email: customer.email,
+      address: customer.address,
+      city: customer.city,
+      zipCode: customer.zipCode,
+      country: customer.country,
+      items: items.map(item => ({
+        productId: item.product.id,
+        quantity: item.quantity
+      }))
     };
-    this.clearCart();
-    return order;
+
+    return this.http.post<Order>(`${environment.apiUrl}/orders`, createOrderDto).toPromise().then(
+      (response) => {
+        if (!response) throw new Error('No response from server');
+        this.ngZone.run(() => {
+          this.clearCart();
+          // Force global change detection to ensure all components re-render
+          this.appRef.tick();
+        });
+        return response;
+      }
+    );
   }
 
   private loadFromStorage(): CartItem[] {

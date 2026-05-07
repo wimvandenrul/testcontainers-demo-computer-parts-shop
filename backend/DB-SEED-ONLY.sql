@@ -1,5 +1,38 @@
 USE [ShopDb]
 
+-- Create order table
+IF NOT EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[order]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE [dbo].[order] (
+        [Id] INT IDENTITY(1,1) PRIMARY KEY,
+        [OrderId] NVARCHAR(50) NOT NULL,
+        [CreatedAt] DATETIME2 NOT NULL,
+        [Total] DECIMAL(18, 2) NOT NULL,
+        [FirstName] NVARCHAR(100) NOT NULL,
+        [LastName] NVARCHAR(100) NOT NULL,
+        [Email] NVARCHAR(100) NOT NULL,
+        [Address] NVARCHAR(200) NOT NULL,
+        [City] NVARCHAR(100) NOT NULL,
+        [ZipCode] NVARCHAR(20) NOT NULL,
+        [Country] NVARCHAR(100) NOT NULL
+    )
+END
+
+-- Create order_item table
+IF NOT EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[order_item]') AND type in (N'U'))
+BEGIN
+    CREATE TABLE [dbo].[order_item] (
+        [Id] INT IDENTITY(1,1) PRIMARY KEY,
+        [OrderId] INT NOT NULL,
+        [ProductId] INT NOT NULL,
+        [ProductName] NVARCHAR(200) NOT NULL,
+        [ProductPrice] DECIMAL(18, 2) NOT NULL,
+        [Quantity] INT NOT NULL,
+        CONSTRAINT [FK_order_item_order] FOREIGN KEY ([OrderId]) REFERENCES [dbo].[order]([Id]) ON DELETE CASCADE,
+        CONSTRAINT [FK_order_item_product] FOREIGN KEY ([ProductId]) REFERENCES [dbo].[product]([Id]) ON DELETE RESTRICT
+    )
+END
+
 SET IDENTITY_INSERT [dbo].[category] ON 
 
 INSERT [dbo].[category] ([Id], [Name], [Description]) VALUES (1, N'Cpu', N'Processors')

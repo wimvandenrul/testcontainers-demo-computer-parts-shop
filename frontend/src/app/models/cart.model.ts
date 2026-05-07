@@ -5,14 +5,6 @@ export interface CartItem {
   quantity: number;
 }
 
-export interface Order {
-  id: string;
-  items: CartItem[];
-  total: number;
-  customer: CustomerInfo;
-  date: string;
-}
-
 export interface CustomerInfo {
   firstName: string;
   lastName: string;

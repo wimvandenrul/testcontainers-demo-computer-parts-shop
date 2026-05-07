@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectorRef } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart.service';
-import { CustomerInfo, Order } from '../../models/cart.model';
+import { CustomerInfo } from '../../models/cart.model';
+import { Order } from '../../models/order.model';
 
 @Component({
   selector: 'app-checkout',
@@ -170,6 +171,7 @@ import { CustomerInfo, Order } from '../../models/cart.model';
 export class CheckoutComponent {
   cartService = inject(CartService);
   router = inject(Router);
+  cdr = inject(ChangeDetectorRef);
 
   customer: CustomerInfo = {
     firstName: '',
@@ -200,15 +202,23 @@ export class CheckoutComponent {
   submitOrder(): void {
     if (!this.isFormValid()) return;
 
-    this.order = this.cartService.submitOrder(this.customer);
-    this.customer = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      address: '',
-      city: '',
-      zipCode: '',
-      country: '',
-    };
+    this.cartService.submitOrder(this.customer).then(
+      (order) => {
+        this.order = order;
+        this.customer = {
+          firstName: '',
+          lastName: '',
+          email: '',
+          address: '',
+          city: '',
+          zipCode: '',
+          country: '',
+        };
+        this.cdr.markForCheck();
+      }
+    ).catch((error) => {
+      console.error('Failed to submit order:', error);
+      alert('Failed to submit order. Please try again.');
+    });
   }
 }
