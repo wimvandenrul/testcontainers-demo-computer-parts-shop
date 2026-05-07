@@ -91,6 +91,9 @@ app.MapGet("/test/reset-db", async (IConfiguration config, ShopContext context) 
         var seedSqlScript = await File.ReadAllTextAsync("TestContainers/DB-SEED-ONLY.sql");
         await context.Database.ExecuteSqlRawAsync(seedSqlScript);
 
+        // ADD STABILIZATION DELAY
+        await Task.Delay(30000);
+
         return Results.Ok();
     }
     finally
