@@ -47,7 +47,7 @@ public class CreateOrderCommand
         // Create the order entity
         var order = new Order
         {
-            OrderId = $"ORD-{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}",
+            OrderId = $"{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}",
             CreatedAt = DateTime.UtcNow,
             FirstName = dto.FirstName,
             LastName = dto.LastName,

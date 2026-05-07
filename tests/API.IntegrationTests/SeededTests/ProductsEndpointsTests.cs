@@ -68,7 +68,7 @@ namespace Api.IntegrationTests.SeededTests
             Assert.True(product.Id > 0);
             Assert.Equal("TEST 123456 CPU", product.Name);
             Assert.Equal("TEST 123456 CPU - VERY GOOD CPU", product.Description);
-            Assert.Equal(900M, product.Price);
+            Assert.Equal(1000M, product.Price);
             Assert.Equal("Cpu", product.Category.Name);
             Assert.Equal("Processors", product.Category.Description);
         }

@@ -37,7 +37,7 @@ test.describe('Product List Page', () => {
 
     await expect(productListPage.categorySections.nth(1).locator('h2')).toContainText('Gpu');
 
-    await expect(productListPage.categorySections.nth(2).locator('h2')).toContainText('Motherboard');
+    await expect(productListPage.categorySections.nth(2).locator('h2')).toContainText('123');
   });
 
 });
