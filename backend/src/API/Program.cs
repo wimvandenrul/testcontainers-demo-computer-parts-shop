@@ -92,7 +92,7 @@ app.MapGet("/test/reset-db", async (IConfiguration config, ShopContext context) 
         await context.Database.ExecuteSqlRawAsync(seedSqlScript);
 
         // ADD STABILIZATION DELAY
-        await Task.Delay(30000);
+        await Task.Delay(10000);
 
         return Results.Ok();
     }
