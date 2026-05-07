@@ -12,6 +12,8 @@ test.describe("Checkout - submit order", () => {
     header = new Header(page);
     cartPage = new CartPage(page);
 
+    console.log('API URL found:', process.env.API_URL);
+
     await dbFixture.resetDb();
   });
 

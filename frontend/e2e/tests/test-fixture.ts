@@ -13,11 +13,11 @@ export const test = base.extend<{}, { account: Account }>({
 
     console.log('Setting up account fixture for worker:', workerInfo.workerIndex);
 
-    await use({  });
+    await use({});
   }, { scope: 'worker' }],
 
   page: async ({ page, account }, use) => {
-    
+
     console.log('Injecting API URL into page...');
 
     // Read the API URL written by global-setup.ts
@@ -27,7 +27,7 @@ export const test = base.extend<{}, { account: Account }>({
         readFileSync(configPath, 'utf8')
       ) as { apiUrl: string };
 
-      if (apiUrl){
+      if (apiUrl) {
         console.log('API URL found:', apiUrl);
         process.env.API_URL = apiUrl;
       }
@@ -37,7 +37,7 @@ export const test = base.extend<{}, { account: Account }>({
         `window.__E2E_API_URL = '${apiUrl}';`
       );
     }
-    
+
     await use(page);
   },
 });
@@ -49,10 +49,34 @@ export const dbFixture = {
 
     console.log('URL to reset DB:', process.env.API_URL + '/test/reset-db');
 
-    // 4. Seed baseline data
-    await fetch(process.env.API_URL + '/test/reset-db', {
-      method: 'GET'
-    });
+    try {
+      const response = await fetch(process.env.API_URL + '/test/reset-db', {
+        method: 'GET'
+      });
+
+      console.log('status', response.status);
+
+      const body = await response.text();
+      console.log('body', body);
+    }
+    catch (error: any) {
+      console.error('FETCH FAILED');
+      console.error('message:', error?.message);
+      console.error('stack:', error?.stack);
+      console.error('cause:', error?.cause);
+
+      if (error?.cause) {
+        console.error('cause.code:', error.cause.code);
+        console.error('cause.errno:', error.cause.errno);
+        console.error('cause.syscall:', error.cause.syscall);
+        console.error('cause.address:', error.cause.address);
+        console.error('cause.port:', error.cause.port);
+      }
+
+      console.error('API_URL:', process.env.API_URL);
+
+      throw error;
+    }
 
   }
 }
