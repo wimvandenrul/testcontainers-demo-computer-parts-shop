@@ -58,6 +58,8 @@ export const dbFixture = {
 
       const body = await response.text();
       console.log('body', body);
+
+      await waitForHealthy(process.env.API_URL || '');
     }
     catch (error: any) {
       console.error('FETCH FAILED');
@@ -79,6 +81,20 @@ export const dbFixture = {
     }
 
   }
+}
+
+async function waitForHealthy(url: string) {
+  for (let i = 0; i < 30; i++) {
+    try {
+      const res = await fetch(`${url}/health`);
+      if (res.ok) { 
+        console.log('API is healthy');
+        return;
+      }
+    } catch {}
+    await new Promise(r => setTimeout(r, 1000));
+  }
+  throw new Error("API not ready");
 }
 
 export { expect } from '@playwright/test';
