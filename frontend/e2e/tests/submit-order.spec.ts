@@ -14,6 +14,8 @@ test.describe("Checkout - submit order", () => {
 
     console.log('API URL found:', process.env.API_URL);
 
+    // temporary CI workaround
+    await new Promise(resolve => setTimeout(resolve, 15000));
     await dbFixture.resetDb();
   });
 
